@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_config/flutter_config.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdState {
@@ -12,8 +13,10 @@ class AdState {
   /// Android test unit IDs can be found here:
   /// https://developers.google.com/admob/android/test-ads?hl=en-GB#enable_test_devices
   String get bannerAdUnitIdDiceScreen => Platform.isAndroid
-      ? 'ca-app-pub-3940256099942544/6300978111' //Android Banner Test unit ID
-      : 'ca-app-pub-3940256099942544/2934735716'; //iOS Banner Test unit ID
+      ? FlutterConfig.get(
+          'ADUNITID_ANDROID_BANNER_DICESCREEN') //Android Banner Test unit ID
+      : FlutterConfig.get(
+          'ADUNITID_IOS_BANNER_DICESCREEN'); //iOS Banner Test unit ID
 
   BannerAdListener get bannerAdListener => _bannerAdListener;
 
